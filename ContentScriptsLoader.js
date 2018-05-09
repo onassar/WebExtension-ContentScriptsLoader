@@ -1,6 +1,6 @@
 
 /**
- * ContentScriptsRuntime
+ * ContentScriptsLoader
  * 
  * Manages the insertion of content scripts to all matching tabs. This is useful
  * so that after your extension is installed, it's available to be used in all
@@ -21,7 +21,7 @@
  * chrome.runtime.onInstalled.addListener(
  *     function(details) {
  *         if (details.reason === 'install') {
- *             ContentScriptsRuntime.insert().then(function() {
+ *             ContentScriptsLoader.insert().then(function() {
  *                 alert('Extension code available in all tabs');
  *             });
  *         }
@@ -29,7 +29,7 @@
  * );
  * @abstract
  */
-window.ContentScriptsRuntime = (function() {
+window.ContentScriptsLoader = (function() {
 
     /**
      * __cloneArray
