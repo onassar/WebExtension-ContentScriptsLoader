@@ -1,1 +1,1 @@
-# Chrome-ContentScriptsLoader
+# WebExtension-ContentScriptsLoader
