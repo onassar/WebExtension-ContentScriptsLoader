@@ -20,3 +20,6 @@ chrome.runtime.onInstalled.addListener(
     }
 );
 ```
+
+## Note
+Have only tested this with Chrome Web Extensions, but I believe it ought to work with Mozilla as well.
