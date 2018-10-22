@@ -44,7 +44,7 @@ window.ContentScriptsLoader = (function() {
 
     /**
      * __getManifest
-     *
+     * 
      * @access  public
      * @return  Object
      */
@@ -134,14 +134,18 @@ window.ContentScriptsLoader = (function() {
                 if (script.type === 'css') {
                     closure = chrome.tabs.insertCSS;
                 }
-                closure(tab.id, {
-                    file: script.value,
-                    runAt: runAt
-                }, function() {
-                    __loadScriptsRecursively(scripts, tab, runAt).then(
-                        resolve
-                    );
-                });
+                if (tab.url.match(/^chrome\:\//) === null) {
+                    closure(tab.id, {
+                        file: script.value,
+                        runAt: runAt
+                    }, function() {
+                        __loadScriptsRecursively(scripts, tab, runAt).then(
+                            resolve
+                        );
+                    });
+                } else {
+                    resolve();
+                }
             }
         });
     };
