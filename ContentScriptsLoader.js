@@ -129,12 +129,12 @@ window.ContentScriptsLoader = (function() {
             if (scripts.length === 0) {
                 resolve();
             } else {
-                var script = scripts.shift(),
-                    closure = chrome.tabs.executeScript;
-                if (script.type === 'css') {
-                    closure = chrome.tabs.insertCSS;
-                }
-                if (tab.url.match(/^chrome\:\//) === null) {
+                if (tab.url.match(/^chrome\:\//i) === null) {
+                    var script = scripts.shift(),
+                        closure = chrome.tabs.executeScript;
+                    if (script.type === 'css') {
+                        closure = chrome.tabs.insertCSS;
+                    }
                     closure(tab.id, {
                         file: script.value,
                         runAt: runAt
